@@ -308,6 +308,14 @@ paths:
           source: |
             http GET https://extractorapi.com/api/v1/scrape-ai?psearch=Summarize the text from this page&source=https://www.example.com/&model_name=gemini-1.5-pro-latest \
                      Authorization:"Bearer YOUR_API_KEY"
+      parameters:
+        - name: apikey
+          in: query
+          description: Your account's API key.
+          required: true
+          schema:
+            type: string
+            example: 90c972dba7fz32c3degp478bd328764ab200123
       responses:
         200:
           description: OK
