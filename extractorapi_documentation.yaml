@@ -337,7 +337,7 @@ paths:
           schema:
             type: string
           example:  |
-            "https://www.example.com"
+            "https://www.example.com" or 
             ["https://www.example.com", "https://www.example.org"]
       responses:
         200:
