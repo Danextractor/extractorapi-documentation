@@ -258,106 +258,106 @@ paths:
                 example:
                     detail: Please check that you entered your API key correctly
 
-/scrape-ai:
-  get:
-    summary: AI Extractor
-    description: |
-      This endpoint allows you prompt a selected model and drive a variety of interactions with any website of your choosing. It can handle both single and multiple URLs. You can use the following LLM models such as `gpt-3.5-turbo`, `gpt-4`, `gpt-4o`, `gemini-1.5-pro-latest`. The tool returns a JSON object with the prompt results and an HTTP status code. Sample prompts for a query include but are not limited to:
-      - Pull in all article text
-      - Pull in all body text
-      - Summarize the text from this page
-      - Extract the article text from this page
-      - Extract the main body text from this page
-      - What are the main sections on this page
-      - Pull in the clean body text
-    security:
-      - Bearer: []
-    x-code-samples:
-      - lang: Python
-        source: |
-          import requests
-
-          endpoint = "https://extractorapi.com/api/v1/scrape-ai?psearch=Summarize the text from this page&source=https://www.example.com/&model_name=gemini-1.5-pro-latest"
-          api_key = "YOUR_API_KEY"
-          headers = {
-            "Authorization": f"Bearer {api_key}"
-          }
-
-          r = requests.get(endpoint, headers=headers)
-          print(r.json())
-      - lang: JavaScript
-        source: |
-          var Http = new XMLHttpRequest();
-          var apiKey = "YOUR_API_KEY"
-          var endpoint = "https://extractorapi.com/api/v1/scrape-ai?psearch=Summarize the text from this page&source=https://www.example.com/&model_name=gemini-1.5-pro-latest";
-
-          Http.open("GET", endpoint);
-          Http.setRequestHeader(
-             "Content-Type", "application/json"
-          );
-          Http.setRequestHeader(
-             "Authorization", `Bearer ${apiKey}`
-          );
-          Http.send();
-
-          Http.onreadystatechange = (e) => {
-            console.log(Http.responseText)
-          }
-      - lang: HTML
-        label: HTTPie
-        source: |
-          http GET https://extractorapi.com/api/v1/scrape-ai?psearch=Summarize the text from this page&source=https://www.example.com/&model_name=gemini-1.5-pro-latest \
-                   Authorization:"Bearer YOUR_API_KEY"
-    parameters:
-      - name: apikey
-        in: query
-        description: Your account's API key.
-        required: true
-        schema:
-          type: string
-          example: 90c972dba7fz32c3degp478bd328764ab200123
-      - name: model_name
-        in: query
-        description: LLM Model Name.
-        required: true
-        schema:
-          type: string
-          example: "gpt-4o"
-      - name: psearch
-        in: query
-        description: Prompt search.
-        required: true
-        schema:
-          type: string
-          example: "Pull in the html"
-      - name: source
-        in: query
-        description: Single or multiple URls
-        required: true
-        schema:
-          type: string
-          example:  |
-            "https://www.example.com"
-            ["https://www.example.com", "https://www.example.org"]
-    responses:
-      200:
-        description: OK
-        content:
-          application/json:
+    /scrape-ai:
+      get:
+        summary: AI Extractor
+        description: |
+          This endpoint allows you prompt a selected model and drive a variety of interactions with any website of your choosing. It can handle both single and multiple URLs. You can use the following LLM models such as `gpt-3.5-turbo`, `gpt-4`, `gpt-4o`, `gemini-1.5-pro-latest`. The tool returns a JSON object with the prompt results and an HTTP status code. Sample prompts for a query include but are not limited to:
+          - Pull in all article text
+          - Pull in all body text
+          - Summarize the text from this page
+          - Extract the article text from this page
+          - Extract the main body text from this page
+          - What are the main sections on this page
+          - Pull in the clean body text
+        security:
+          - Bearer: []
+        x-code-samples:
+          - lang: Python
+            source: |
+              import requests
+    
+              endpoint = "https://extractorapi.com/api/v1/scrape-ai?psearch=Summarize the text from this page&source=https://www.example.com/&model_name=gemini-1.5-pro-latest"
+              api_key = "YOUR_API_KEY"
+              headers = {
+                "Authorization": f"Bearer {api_key}"
+              }
+    
+              r = requests.get(endpoint, headers=headers)
+              print(r.json())
+          - lang: JavaScript
+            source: |
+              var Http = new XMLHttpRequest();
+              var apiKey = "YOUR_API_KEY"
+              var endpoint = "https://extractorapi.com/api/v1/scrape-ai?psearch=Summarize the text from this page&source=https://www.example.com/&model_name=gemini-1.5-pro-latest";
+    
+              Http.open("GET", endpoint);
+              Http.setRequestHeader(
+                 "Content-Type", "application/json"
+              );
+              Http.setRequestHeader(
+                 "Authorization", `Bearer ${apiKey}`
+              );
+              Http.send();
+    
+              Http.onreadystatechange = (e) => {
+                console.log(Http.responseText)
+              }
+          - lang: HTML
+            label: HTTPie
+            source: |
+              http GET https://extractorapi.com/api/v1/scrape-ai?psearch=Summarize the text from this page&source=https://www.example.com/&model_name=gemini-1.5-pro-latest \
+                       Authorization:"Bearer YOUR_API_KEY"
+        parameters:
+          - name: apikey
+            in: query
+            description: Your account's API key.
+            required: true
             schema:
-              type: object
-              properties:
-                body:
+              type: string
+              example: 90c972dba7fz32c3degp478bd328764ab200123
+          - name: model_name
+            in: query
+            description: LLM Model Name.
+            required: true
+            schema:
+              type: string
+              example: "gpt-4o"
+          - name: psearch
+            in: query
+            description: Prompt search.
+            required: true
+            schema:
+              type: string
+              example: "Pull in the html"
+          - name: source
+            in: query
+            description: Single or multiple URls
+            required: true
+            schema:
+              type: string
+              example:  |
+                "https://www.example.com"
+                ["https://www.example.com", "https://www.example.org"]
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
                   type: object
-                  description: Prompt search response/answer
-                statusCode:
-                  type: integer
-                  description: http response code status
-              example:
-                body: '"html": "<html></html>"'
-                statusCode: 200
-      401:
-        $ref: "#/components/responses/UnauthorizedError"
+                  properties:
+                    body:
+                      type: object
+                      description: Prompt search response/answer
+                    statusCode:
+                      type: integer
+                      description: http response code status
+                  example:
+                    body: '"html": "<html></html>"'
+                    statusCode: 200
+          401:
+            $ref: "#/components/responses/UnauthorizedError"
 
   /search:
     get:
