@@ -955,7 +955,7 @@ paths:
 
   /scrape-ai:
     get:
-      summary: URL Details
+      summary: AI Extractor
       description: |
         This tool extracts and prompts the selected model. It can handle both single and multiple URLs. You can use various LLM models such as `gpt-3.5-turbo`, `gpt-4`, `gpt-4o`, `gemini-1.5-pro-latest`. The tool returns a JSON object with the prompt results and an HTTP status code.
       security:
