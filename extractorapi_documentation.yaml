@@ -330,6 +330,15 @@ paths:
           schema:
             type: string
             example: "Pull in the html"
+        - name: source
+          in: query
+          description: Single or multiple URls
+          required: true
+          schema:
+            type: string
+          example:  |
+            "https://www.example.com"
+            ["https://www.example.com", "https://www.example.org"]
       responses:
         200:
           description: OK
