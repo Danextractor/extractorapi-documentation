@@ -332,7 +332,7 @@ paths:
             example: "Pull in the html"
         - name: source
           in: query
-          description: Single or multiple URls
+          description: Single or multiple URls.
           required: true
           schema:
             type: string
