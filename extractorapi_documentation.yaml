@@ -316,6 +316,20 @@ paths:
           schema:
             type: string
             example: 90c972dba7fz32c3degp478bd328764ab200123
+        - name: model_name
+          in: query
+          description: LLM Model Name.
+          required: true
+          schema:
+            type: string
+            example: "gpt-4o"
+        - name: psearch
+          in: query
+          description: Prompt search.
+          required: true
+          schema:
+            type: string
+            example: "Pull in the html"
       responses:
         200:
           description: OK
