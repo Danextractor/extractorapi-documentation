@@ -262,7 +262,7 @@ paths:
     get:
       summary: AI Extractor
       description: |
-        This endpoint allows you prompt a selected model and drive a variety of interactions with any website of your choosing. It can handle both single and multiple URLs. You can use the following LLM models such as `gpt-3.5-turbo`, `gpt-4`, `gpt-4o`, `gemini-1.5-pro-latest`. The tool returns a JSON object with the prompt results and an HTTP status code. Sample prompts for a query include but are not limited to:
+        This endpoint allows you prompt a selected model and drive a variety of interactions with any website of your choosing. It can handle both single and multiple URLs. You can use the following LLM models such as `gpt-3.5-turbo`, `gpt-4`, `gpt-4-turbo`, `gpt-4o`, `gpt-4o-mini`, `gemini-1.5-pro-latest`. The tool returns a JSON object with the prompt results and an HTTP status code. Sample prompts for a query include but are not limited to:
         - Pull in all article text
         - Pull in all body text
         - Summarize the text from this page
